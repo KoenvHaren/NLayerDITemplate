@@ -56,7 +56,8 @@ This has the side advantage of excellent extendability: What if you want to add 
         }
 ```
 
-### Typed HttpClients
+### Typed HttpClients 
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-2.2#typed-clients
 Not exactly a secret to most developers familiar with .net Core already, but those migrating from .Net, might be surprised with how the HttpClient class functions in a DI enviroment. Every time a requests initialises another HttpClient class, it opens another Port on your server. Now this would be fine, because requests are finished right? Wrong. The sockets are kept open for about 2-5 minutes, just waiting in case another response is given to the earlier request. This can get out of hand on busy Apps fast. 
 
 Just using a single (static) HttpClient seems to be the solution, but brings a lot of logistical difficulties with it when you start going into different layers of your application. What if i use an external provider for Auth? I need a connection in my Presentation layer for that middleware connection, but then my external loggingservice would also require one in the Business Logic layer.
