@@ -24,11 +24,14 @@ namespace NLayerDITemplate.Service.Injection
             //DbContext
             //services.AddDbContext
 
-            //Services
+            //Services Services for a list on Service lifetimes, Scoped vs Transient etc. see https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2#service-lifetimes
             services.AddTransient<IValueService, ValueService>();
 
             //Repositories
             services.AddScoped<IValueRepository, ValueRepository>();
+
+            //HttpClients https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-2.2#typed-clients
+            services.AddHttpClient<IValueService, ValueService>();
         }
     }
 }
