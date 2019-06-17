@@ -31,7 +31,11 @@ namespace NLayerDITemplate.Service.Injection
             services.AddScoped<IValueRepository, ValueRepository>();
 
             //Typed HttpClients https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-2.2#typed-clients
-            services.AddHttpClient<IValueService, ValueService>();
+            services.AddHttpClient<IValueService, ValueService>(c => 
+            {
+                c.BaseAddress = new Uri(configuration.GetSection("UrlSettings:ValueUrl").Key);
+                c.DefaultRequestHeaders.Add("User-Agent", "NLayerTemplateSample");
+            });
         }
     }
 }
