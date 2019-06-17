@@ -30,7 +30,7 @@ namespace NLayerDITemplate.Service.Injection
             //Repositories
             services.AddScoped<IValueRepository, ValueRepository>();
 
-            //HttpClients https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-2.2#typed-clients
+            //Typed HttpClients https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-2.2#typed-clients
             services.AddHttpClient<IValueService, ValueService>();
         }
     }
